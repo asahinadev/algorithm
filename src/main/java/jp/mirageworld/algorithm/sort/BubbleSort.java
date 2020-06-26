@@ -10,17 +10,16 @@ public class BubbleSort {
 
 	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
-		boolean flag;
-		do {
-			flag = false;
+		while (true) {
+			boolean flag = false;
 
-			for (int i = 1; i < list.size(); i++) {
-				E a = result.get(i - 1);
-				E b = result.get(i - 0);
+			for (int i = 0, j = 1; j < list.size(); i++, j++) {
+				E a = result.get(i);
+				E b = result.get(j);
 
 				if (a.compareTo(b) > 0) {
-					result.set(i - 1, b);
-					result.set(i - 0, a);
+					result.set(i, b);
+					result.set(j, a);
 					chgCount++;
 					flag = true;
 				}
@@ -28,10 +27,10 @@ public class BubbleSort {
 
 			if (flag) {
 				loopCount++;
+			} else {
+				break;
 			}
-
-		} while (flag);
-
+		}
 		return result;
 
 	}
