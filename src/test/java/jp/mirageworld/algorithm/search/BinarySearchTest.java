@@ -1,5 +1,6 @@
 package jp.mirageworld.algorithm.search;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -14,6 +15,7 @@ class BinarySearchTest
 		searchTest(list, test, new BinarySearch().apply(list, test));
 	}
 
+	@Test
 	public void test() {
 		searchTest(list, -1, new BinarySearch().apply(list, 11));
 	}
@@ -26,6 +28,7 @@ class BinarySearchTest
 		searchTest(list, true, new BinarySearch().check(list, test));
 	}
 
+	@Test
 	public void container() {
 		searchTest(list, false, new BinarySearch().check(list, 11));
 	}
