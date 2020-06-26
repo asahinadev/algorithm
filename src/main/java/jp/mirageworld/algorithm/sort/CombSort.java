@@ -1,0 +1,54 @@
+package jp.mirageworld.algorithm.sort;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class CombSort {
+
+	int loopCount = 0;
+	int chgCount = 0;
+
+	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
+		List<E> result = new ArrayList<>(list);
+
+		int h = list.size() * 10 / 13;
+
+		while (true) {
+			boolean flag = false;
+
+			int swaps = 0;
+			for (int i = 0, j = i + h; i + h < list.size(); ++i, j = i + h) {
+				E a = result.get(i);
+				E b = result.get(j);
+
+				if (a.compareTo(b) > 0) {
+					result.set(i, b);
+					result.set(j, a);
+					chgCount++;
+					flag = true;
+					swaps++;
+				}
+			}
+			if (flag)
+				loopCount++;
+
+			if (h == 1) {
+				if (swaps == 0) {
+					break;
+				}
+			} else {
+				h = h * 10 / 13;
+			}
+		}
+		return result;
+
+	}
+
+	public int getLoopCount() {
+		return loopCount;
+	}
+
+	public int getChgCount() {
+		return chgCount;
+	}
+}
