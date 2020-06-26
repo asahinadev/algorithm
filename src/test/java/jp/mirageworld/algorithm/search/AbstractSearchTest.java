@@ -8,7 +8,7 @@ import java.util.stream.IntStream;
 
 public class AbstractSearchTest {
 
-	List<Integer> list = IntStream.range(0, 10).boxed().collect(Collectors.toList());
+	List<Integer> list = IntStream.range(0, 20).filter(i -> i != 15).boxed().collect(Collectors.toList());
 
 	public void searchTest(List<Integer> result, Integer ok, Integer test) {
 		System.out.println(result);
