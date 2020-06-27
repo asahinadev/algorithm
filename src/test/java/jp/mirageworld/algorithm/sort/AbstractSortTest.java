@@ -18,7 +18,7 @@ public class AbstractSortTest {
 			int j = i + 1;
 			int a = result.get(i);
 			int b = result.get(j);
-			assertTrue(a < b);
+			assertTrue(a < b, "%d < %d".formatted(a, b));
 		}
 	}
 }
