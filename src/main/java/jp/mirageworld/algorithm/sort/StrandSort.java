@@ -9,6 +9,7 @@ import java.util.ListIterator;
 public class StrandSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
+	@Override
 	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>();
 		while (!list.isEmpty()) {

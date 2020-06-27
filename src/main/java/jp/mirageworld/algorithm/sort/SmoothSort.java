@@ -9,6 +9,7 @@ public class SmoothSort<E extends Comparable<? super E>>
 
 	int[] memo = { 1, 1 };
 
+	@Override
 	public List<E> apply(List<E> list) {
 
 		List<E> result = new ArrayList<>(list);

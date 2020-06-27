@@ -6,6 +6,7 @@ import java.util.List;
 public class QuickSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
+	@Override
 	public List<E> apply(List<E> list) {
 		return sort(new ArrayList<>(list), 0, list.size() - 1);
 	}
@@ -49,6 +50,7 @@ public class QuickSort<E extends Comparable<? super E>>
 			return z;
 	}
 
+	@Override
 	public boolean swap(List<E> result, int i, int j) {
 		E a = result.get(i);
 		E b = result.get(j);

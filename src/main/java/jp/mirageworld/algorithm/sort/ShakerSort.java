@@ -6,6 +6,7 @@ import java.util.List;
 public class ShakerSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
+	@Override
 	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 		int top = 0;

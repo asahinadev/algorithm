@@ -6,6 +6,7 @@ import java.util.List;
 public class GnomeSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
+	@Override
 	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 		while (true) {

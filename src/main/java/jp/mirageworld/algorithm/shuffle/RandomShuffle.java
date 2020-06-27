@@ -6,6 +6,7 @@ import java.util.Random;
 
 public class RandomShuffle<T> implements Shuffle<T> {
 
+	@Override
 	public List<T> apply(List<T> list) {
 		List<T> random = new ArrayList<T>(list);
 		Random r = new Random(System.currentTimeMillis());

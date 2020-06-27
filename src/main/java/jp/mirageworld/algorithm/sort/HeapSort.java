@@ -6,6 +6,7 @@ import java.util.List;
 public class HeapSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
+	@Override
 	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 
@@ -64,6 +65,7 @@ public class HeapSort<E extends Comparable<? super E>>
 		}
 	}
 
+	@Override
 	public boolean swap(List<E> result, int i, int j) {
 		E a = result.get(i);
 		E b = result.get(j);

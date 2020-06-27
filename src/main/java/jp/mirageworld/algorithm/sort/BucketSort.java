@@ -9,6 +9,7 @@ import java.util.TreeMap;
 public class BucketSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
+	@Override
 	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 
