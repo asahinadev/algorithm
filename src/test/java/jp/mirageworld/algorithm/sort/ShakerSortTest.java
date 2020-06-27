@@ -6,6 +6,6 @@ class ShakerSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new ShakerSort().apply(list));
+		super.sortTest(new ShakerSort<Integer>().apply(list));
 	}
 }

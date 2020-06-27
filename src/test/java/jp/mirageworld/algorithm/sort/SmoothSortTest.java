@@ -6,6 +6,6 @@ class SmoothSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new SmoothSort().apply(list));
+		super.sortTest(new SmoothSort<Integer>().apply(list));
 	}
 }

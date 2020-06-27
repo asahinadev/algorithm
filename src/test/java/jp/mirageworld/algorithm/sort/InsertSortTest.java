@@ -6,6 +6,6 @@ class InsertSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new InsertSort().apply(list));
+		super.sortTest(new InsertSort<Integer>().apply(list));
 	}
 }

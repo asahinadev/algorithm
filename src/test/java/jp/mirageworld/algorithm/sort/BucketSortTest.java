@@ -6,6 +6,6 @@ class BucketSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new BucketSort().apply(list));
+		super.sortTest(new BucketSort<Integer>().apply(list));
 	}
 }

@@ -11,6 +11,7 @@ class MultilayerMergeSortTest extends AbstractSortTest {
 	void test() {
 		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
 		assertThrows(
-				UnsupportedOperationException.class, () -> new MultilayerMergeSort().apply(list));
+				UnsupportedOperationException.class, 
+				() -> new MultilayerMergeSort<Integer>().apply(list));
 	}
 }

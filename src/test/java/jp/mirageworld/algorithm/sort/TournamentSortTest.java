@@ -11,6 +11,7 @@ class TournamentSortTest extends AbstractSortTest {
 	void test() {
 		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
 		assertThrows(
-				UnsupportedOperationException.class, () -> new TournamentSort().apply(list));
+				UnsupportedOperationException.class,
+				() -> new TournamentSort<Integer>().apply(list));
 	}
 }

@@ -6,6 +6,6 @@ class StrandSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new BubbleSort().apply(list));
+		super.sortTest(new BubbleSort<Integer>().apply(list));
 	}
 }

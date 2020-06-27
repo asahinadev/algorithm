@@ -3,9 +3,10 @@ package jp.mirageworld.algorithm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HeapSort {
+public class HeapSort<E extends Comparable<? super E>>
+		implements Sort<E> {
 
-	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
+	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 
 		int i = 0;
@@ -23,7 +24,7 @@ public class HeapSort {
 		return result;
 	}
 
-	private <E extends Comparable<? super E>> void upheap(List<E> result, int n) {
+	void upheap(List<E> result, int n) {
 		while (n > 0) {
 			int m = (((n) + 1) / 2 - 1);
 			if (hasSwap(result, n, m)) {
@@ -35,7 +36,7 @@ public class HeapSort {
 		}
 	}
 
-	private <E extends Comparable<? super E>> void downheap(List<E> result, int n) {
+	void downheap(List<E> result, int n) {
 		int m = 0;
 		int t = 0;
 
@@ -63,20 +64,11 @@ public class HeapSort {
 		}
 	}
 
-	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
+	public boolean swap(List<E> result, int i, int j) {
 		E a = result.get(i);
 		E b = result.get(j);
 		result.set(i, b);
 		result.set(j, a);
 		return true;
-	}
-
-	protected <E extends Comparable<? super E>> boolean hasSwap(List<E> result, int i, int j) {
-		E a = result.get(i);
-		E b = result.get(j);
-		if (a.compareTo(b) > 0) {
-			return true;
-		}
-		return false;
 	}
 }

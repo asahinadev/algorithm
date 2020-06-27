@@ -11,6 +11,7 @@ class ShellSortTest extends AbstractSortTest {
 	void test() {
 		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
 		assertThrows(
-				UnsupportedOperationException.class, () -> new ShellSort().apply(list));
+				UnsupportedOperationException.class,
+				() -> new ShellSort<Integer>().apply(list));
 	}
 }

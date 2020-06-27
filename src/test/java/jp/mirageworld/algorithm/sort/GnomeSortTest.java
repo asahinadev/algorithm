@@ -6,6 +6,6 @@ class GnomeSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new GnomeSort().apply(list));
+		super.sortTest(new GnomeSort<Integer>().apply(list));
 	}
 }

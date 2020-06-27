@@ -6,6 +6,6 @@ class MageSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new MageSort().apply(list));
+		super.sortTest(new MageSort<Integer>().apply(list));
 	}
 }

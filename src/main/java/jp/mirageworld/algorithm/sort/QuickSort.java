@@ -3,13 +3,14 @@ package jp.mirageworld.algorithm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuickSort {
+public class QuickSort<E extends Comparable<? super E>>
+		implements Sort<E> {
 
-	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
+	public List<E> apply(List<E> list) {
 		return sort(new ArrayList<>(list), 0, list.size() - 1);
 	}
 
-	private <E extends Comparable<? super E>> List<E> sort(List<E> result, int left, int right) {
+	List<E> sort(List<E> result, int left, int right) {
 
 		if (left < right) {
 			int i = left;
@@ -32,7 +33,7 @@ public class QuickSort {
 		return result;
 	}
 
-	private <E extends Comparable<? super E>> E med3(E x, E y, E z) {
+	E med3(E x, E y, E z) {
 		if (x.compareTo(y) < 0)
 			if (y.compareTo(z) < 0)
 				return y;
@@ -48,7 +49,7 @@ public class QuickSort {
 			return z;
 	}
 
-	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
+	public boolean swap(List<E> result, int i, int j) {
 		E a = result.get(i);
 		E b = result.get(j);
 		result.set(i, b);

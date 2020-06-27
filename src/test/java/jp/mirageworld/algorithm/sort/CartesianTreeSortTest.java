@@ -11,6 +11,7 @@ class CartesianTreeSortTest extends AbstractSortTest {
 	void test() {
 		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
 		assertThrows(
-				UnsupportedOperationException.class, () -> new CartesianTreeSort().apply(list));
+				UnsupportedOperationException.class, 
+				() -> new CartesianTreeSort<Integer>().apply(list));
 	}
 }

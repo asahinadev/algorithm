@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class BucketSort {
+public class BucketSort<E extends Comparable<? super E>>
+		implements Sort<E> {
 
-	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
+	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 
 		// 出現回数（OFFSET 用）
@@ -43,28 +44,17 @@ public class BucketSort {
 		return result;
 	}
 
-	protected <E extends Comparable<? super E>> void countup(Map<E, Integer> count, E key) {
+	void countup(Map<E, Integer> count, E key) {
 		if (!count.containsKey(key)) {
 			count.put(key, 0);
 		}
 		count.put(key, count.get(key) + 1);
 	}
 
-	protected <E extends Comparable<? super E>> int countGet(Map<E, Integer> count, E key) {
+	int countGet(Map<E, Integer> count, E key) {
 		if (!count.containsKey(key)) {
 			return 0;
 		}
 		return count.get(key);
-	}
-
-	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
-		E a = result.get(i);
-		E b = result.get(j);
-		if (a.compareTo(b) > 0) {
-			result.set(i, b);
-			result.set(j, a);
-			return true;
-		}
-		return false;
 	}
 }

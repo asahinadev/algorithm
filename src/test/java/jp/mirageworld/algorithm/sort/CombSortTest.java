@@ -6,6 +6,6 @@ class CombSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new CombSort().apply(list));
+		super.sortTest(new CombSort<Integer>().apply(list));
 	}
 }

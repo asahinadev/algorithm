@@ -6,6 +6,6 @@ class SelectSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new SelectSort().apply(list));
+		super.sortTest(new SelectSort<Integer>().apply(list));
 	}
 }

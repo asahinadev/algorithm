@@ -4,91 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class SmoothSort {
+public class SmoothSort<E extends Comparable<? super E>>
+		implements Sort<E> {
 
 	int[] memo = { 1, 1 };
 
-	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
+	public List<E> apply(List<E> list) {
+
 		List<E> result = new ArrayList<>(list);
 		sort(result);
 		return result;
 	}
 
-	public int leonardo(int n) {
-		if (n < memo.length) {
-			if (memo[n] != 0) {
-				return memo[n];
-			}
-		} else {
-			int newLength = memo.length * 2;
-			memo = Arrays.copyOf(memo, (newLength > n) ? newLength : (n + 1));
-		}
-		return memo[n] = leonardo(n - 1)
-				+ leonardo(n - 2) + 1;
-	}
-
-	private <E extends Comparable<? super E>> void sift(List<E> list, int head, int exp) {
-
-		E t = list.get(head);
-		while (exp > 1) {
-			int li = head - 1;
-			int ri = head - 1 - leonardo(exp - 2);
-
-			E r = list.get(ri);
-			E l = list.get(li);
-
-			if (t.compareTo(l) >= 0 && t.compareTo(r) >= 0) {
-				break;
-			} else if (l.compareTo(r) >= 0) {
-				list.set(head, l);
-				head = li;
-				exp -= 1;
-				continue;
-			}
-			list.set(head, r);
-			head = ri;
-			exp -= 2;
-		}
-		list.set(head, t);
-	}
-
-	protected <E extends Comparable<? super E>> void arrange(
-			List<E> list, int head, long frac, int exp) {
-		E t = list.get(head);
-
-		while (frac > 1) {
-			int next = head - leonardo(exp);
-			E n = list.get(next);
-
-			if (t.compareTo(list.get(next)) >= 0) {
-				break;
-			}
-			if (exp > 1) {
-				int li = head - 1;
-				int ri = head - 1 - leonardo(exp - 2);
-
-				E r = list.get(ri);
-				E l = list.get(li);
-
-				if (l.compareTo(n) >= 0 || r.compareTo(n) >= 0) {
-					break;
-				}
-			}
-
-			list.set(head, n);
-
-			head = next;
-
-			int trail = Long.numberOfTrailingZeros(frac - 1);
-			frac >>>= trail;
-			exp += trail;
-		}
-
-		list.set(head, t);
-		sift(list, head, exp);
-	}
-
-	protected <E extends Comparable<? super E>> void sort(List<E> list) {
+	void sort(List<E> list) {
 		if (list.isEmpty())
 			return;
 
@@ -132,7 +60,76 @@ public class SmoothSort {
 		}
 	}
 
-	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
-		throw new UnsupportedOperationException();
+	int leonardo(int n) {
+		if (n < memo.length) {
+			if (memo[n] != 0) {
+				return memo[n];
+			}
+		} else {
+			int newLength = memo.length * 2;
+			memo = Arrays.copyOf(memo, (newLength > n) ? newLength : (n + 1));
+		}
+		return memo[n] = leonardo(n - 1)
+				+ leonardo(n - 2) + 1;
+	}
+
+	void sift(List<E> list, int head, int exp) {
+
+		E t = list.get(head);
+		while (exp > 1) {
+			int li = head - 1;
+			int ri = head - 1 - leonardo(exp - 2);
+
+			E r = list.get(ri);
+			E l = list.get(li);
+
+			if (t.compareTo(l) >= 0 && t.compareTo(r) >= 0) {
+				break;
+			} else if (l.compareTo(r) >= 0) {
+				list.set(head, l);
+				head = li;
+				exp -= 1;
+				continue;
+			}
+			list.set(head, r);
+			head = ri;
+			exp -= 2;
+		}
+		list.set(head, t);
+	}
+
+	void arrange(List<E> list, int head, long frac, int exp) {
+		E t = list.get(head);
+
+		while (frac > 1) {
+			int next = head - leonardo(exp);
+			E n = list.get(next);
+
+			if (t.compareTo(list.get(next)) >= 0) {
+				break;
+			}
+			if (exp > 1) {
+				int li = head - 1;
+				int ri = head - 1 - leonardo(exp - 2);
+
+				E r = list.get(ri);
+				E l = list.get(li);
+
+				if (l.compareTo(n) >= 0 || r.compareTo(n) >= 0) {
+					break;
+				}
+			}
+
+			list.set(head, n);
+
+			head = next;
+
+			int trail = Long.numberOfTrailingZeros(frac - 1);
+			frac >>>= trail;
+			exp += trail;
+		}
+
+		list.set(head, t);
+		sift(list, head, exp);
 	}
 }

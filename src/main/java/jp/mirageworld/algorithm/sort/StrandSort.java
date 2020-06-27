@@ -6,26 +6,22 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-public class StrandSort {
+public class StrandSort<E extends Comparable<? super E>>
+		implements Sort<E> {
 
-	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
-		List<E> result = new ArrayList<>(list);
-		result = sort(result);
-		return result;
-	}
-
-	protected <E extends Comparable<? super E>> List<E> sort(List<E> list) {
-		List<E> result = new LinkedList<E>();
+	public List<E> apply(List<E> list) {
+		List<E> result = new ArrayList<>();
 		while (!list.isEmpty()) {
 			result = merge(result, subList(list));
 		}
 		return result;
 	}
 
-	protected <E extends Comparable<? super E>> List<E> merge(
-			List<E> list1, List<E> list2) {
+	List<E> merge(List<E> list1, List<E> list2) {
+
 		ListIterator<E> iter1 = list1.listIterator();
 		ListIterator<E> iter2 = list2.listIterator();
+
 		List<E> result = new LinkedList<E>();
 		if (!iter1.hasNext()) {
 			return list2;
@@ -63,7 +59,7 @@ public class StrandSort {
 		return result;
 	}
 
-	protected <E extends Comparable<? super E>> List<E> subList(List<E> list) {
+	List<E> subList(List<E> list) {
 		ListIterator<E> iter = list.listIterator();
 		if (!iter.hasNext()) {
 			return Collections.<E>emptyList();
@@ -83,14 +79,4 @@ public class StrandSort {
 		return result;
 	}
 
-	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
-		E a = result.get(i);
-		E b = result.get(j);
-		if (a.compareTo(b) > 0) {
-			result.set(i, b);
-			result.set(j, a);
-			return true;
-		}
-		return false;
-	}
 }

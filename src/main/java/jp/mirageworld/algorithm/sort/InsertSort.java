@@ -3,9 +3,10 @@ package jp.mirageworld.algorithm.sort;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InsertSort {
+public class InsertSort<E extends Comparable<? super E>>
+		implements Sort<E> {
 
-	public <E extends Comparable<? super E>> List<E> apply(List<E> list) {
+	public List<E> apply(List<E> list) {
 		List<E> result = new ArrayList<>(list);
 		for (int i = 1; i < result.size(); i++) {
 			E tmp = result.get(i);
@@ -23,9 +24,4 @@ public class InsertSort {
 		}
 		return result;
 	}
-
-	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
-		throw new UnsupportedOperationException();
-	}
-
 }

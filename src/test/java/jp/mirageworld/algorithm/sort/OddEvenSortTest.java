@@ -6,6 +6,6 @@ class OddEvenSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new OddEvenSort().apply(list));
+		super.sortTest(new OddEvenSort<Integer>().apply(list));
 	}
 }

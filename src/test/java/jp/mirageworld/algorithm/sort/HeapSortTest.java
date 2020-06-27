@@ -6,6 +6,6 @@ class HeapSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new HeapSort().apply(list));
+		super.sortTest(new HeapSort<Integer>().apply(list));
 	}
 }

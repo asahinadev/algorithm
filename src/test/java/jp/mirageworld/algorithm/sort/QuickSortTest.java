@@ -6,6 +6,6 @@ class QuickSortTest extends AbstractSortTest {
 
 	@Test
 	void test() {
-		super.sortTest(new QuickSort().apply(list));
+		super.sortTest(new QuickSort<Integer>().apply(list));
 	}
 }
