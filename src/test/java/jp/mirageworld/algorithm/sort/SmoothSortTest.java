@@ -1,16 +1,11 @@
 package jp.mirageworld.algorithm.sort;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 class SmoothSortTest extends AbstractSortTest {
 
-	@Test()
-	@SuppressWarnings("deprecation")
+	@Test
 	void test() {
-		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
-		assertThrows(
-				UnsupportedOperationException.class, () -> new SmoothSort().apply(list));
+		super.sortTest(new SmoothSort().apply(list));
 	}
 }
