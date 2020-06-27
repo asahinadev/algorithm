@@ -18,9 +18,9 @@ public class QuickSort<E extends Comparable<? super E>>
 			int j = right;
 			E pivot = med3(result.get(i), result.get(i + (j - i) / 2), result.get(j));
 			while (true) {
-				while (result.get(i).compareTo(pivot) < 0)
+				while (compareTo(result.get(i), pivot) < 0)
 					i++;
-				while (pivot.compareTo(result.get(j)) < 0)
+				while (compareTo(pivot, result.get(j)) < 0)
 					j--;
 				if (i >= j)
 					break;
@@ -35,16 +35,16 @@ public class QuickSort<E extends Comparable<? super E>>
 	}
 
 	E med3(E x, E y, E z) {
-		if (x.compareTo(y) < 0)
-			if (y.compareTo(z) < 0)
+		if (compareTo(x, y) < 0)
+			if (compareTo(y, z) < 0)
 				return y;
-			else if (z.compareTo(x) < 0)
+			else if (compareTo(z, x) < 0)
 				return x;
 			else
 				return z;
-		else if (z.compareTo(y) < 0)
+		else if (compareTo(z, y) < 0)
 			return y;
-		else if (x.compareTo(z) < 0)
+		else if (compareTo(x, z) < 0)
 			return x;
 		else
 			return z;

@@ -88,10 +88,10 @@ public class SmoothSort<E extends Comparable<? super E>>
 			E left = result.get(l);
 			E right = result.get(r);
 
-			if (t.compareTo(left) >= 0 && t.compareTo(right) >= 0) {
+			if (compareTo(t, left) >= 0 && compareTo(t, right) >= 0) {
 				break;
 			}
-			if (result.get(l).compareTo(right) >= 0) {
+			if (compareTo(left, right) >= 0) {
 				result.set(head, left);
 				head = l;
 				exp -= 1;
@@ -108,7 +108,8 @@ public class SmoothSort<E extends Comparable<? super E>>
 		E t = v.get(head);
 		while (frac > 1) {
 			int next = head - leonardo(exp);
-			if (t.compareTo(v.get(next)) >= 0) {
+			E target = v.get(next);
+			if (compareTo(t, target) >= 0) {
 				break;
 			}
 			if (exp > 1) {
@@ -116,11 +117,10 @@ public class SmoothSort<E extends Comparable<? super E>>
 				int l = head - 1 - leonardo(exp - 2);
 
 				E left = v.get(l);
-				E target = v.get(next);
 				E right = v.get(r);
 
-				if (left.compareTo(target) >= 0
-						|| right.compareTo(target) >= 0) {
+				if (compareTo(left, target) >= 0
+						|| compareTo(right, target) >= 0) {
 					break;
 				}
 			}

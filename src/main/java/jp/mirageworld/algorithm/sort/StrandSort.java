@@ -33,7 +33,7 @@ public class StrandSort<E extends Comparable<? super E>>
 		E item1 = iter1.next();
 		E item2 = iter2.next();
 		for (;;) {
-			if (item1.compareTo(item2) < 0) {
+			if (compareTo(item1, item2) < 0) {
 				result.add(item1);
 				if (iter1.hasNext()) {
 					item1 = iter1.next();
@@ -72,7 +72,7 @@ public class StrandSort<E extends Comparable<? super E>>
 		result.add(max);
 		while (iter.hasNext()) {
 			E tmp = iter.next();
-			if (tmp.compareTo(max) > 0) {
+			if (compareTo(tmp, max) > 0) {
 				iter.remove();
 				result.add(max = tmp);
 			}

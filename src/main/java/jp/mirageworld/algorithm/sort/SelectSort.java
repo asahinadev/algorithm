@@ -14,12 +14,12 @@ public class SelectSort<E extends Comparable<? super E>>
 			E a = result.get(i);
 			E b = result.get(m);
 			for (int j = i + 1; j < last; j++) {
-				if (b.compareTo(result.get(j)) > 0) {
+				if (compareTo(b, result.get(j)) > 0) {
 					m = j;
 					b = result.get(m);
 				}
 			}
-			if (a.compareTo(b) > 0) {
+			if (compareTo(a, b) > 0) {
 				result.set(i, b);
 				result.set(m, a);
 			}

@@ -21,7 +21,7 @@ public class BinaryInsertSort<E extends Comparable<? super E>>
 			while (left < right) {
 				int mid = (left + right) / 2;
 
-				if (result.get(mid).compareTo(insert) < 0) {
+				if (compareTo(result.get(mid), insert) < 0) {
 					left = mid + 1;
 				} else {
 					right = mid;
