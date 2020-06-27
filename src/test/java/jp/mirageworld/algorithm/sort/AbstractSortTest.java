@@ -14,9 +14,10 @@ public class AbstractSortTest {
 
 		System.out.println(result);
 
-		for (int i = 1; i < result.size(); i++) {
-			int a = result.get(1 - 1);
-			int b = result.get(1 - 0);
+		for (int i = 0; i < result.size() - 1; i++) {
+			int j = i + 1;
+			int a = result.get(i);
+			int b = result.get(j);
 			assertTrue(a < b);
 		}
 	}
