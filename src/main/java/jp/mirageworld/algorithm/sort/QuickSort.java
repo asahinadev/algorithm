@@ -9,30 +9,27 @@ public class QuickSort {
 		return sort(new ArrayList<>(list), 0, list.size() - 1);
 	}
 
-	private <E extends Comparable<? super E>> List<E> sort(List<E> list, int left, int right) {
+	private <E extends Comparable<? super E>> List<E> sort(List<E> result, int left, int right) {
 
 		if (left < right) {
 			int i = left;
 			int j = right;
-			E pivot = med3(list.get(i), list.get(i + (j - i) / 2), list.get(j));
+			E pivot = med3(result.get(i), result.get(i + (j - i) / 2), result.get(j));
 			while (true) {
-				while (list.get(i).compareTo(pivot) < 0)
+				while (result.get(i).compareTo(pivot) < 0)
 					i++;
-				while (pivot.compareTo(list.get(j)) < 0)
+				while (pivot.compareTo(result.get(j)) < 0)
 					j--;
 				if (i >= j)
 					break;
-				E a = list.get(i);
-				E b = list.get(j);
-				list.set(i, b);
-				list.set(j, a);
+				swap(result, i, j);
 				i++;
 				j--;
 			}
-			sort(list, left, i - 1);
-			sort(list, j + 1, right);
+			sort(result, left, i - 1);
+			sort(result, j + 1, right);
 		}
-		return list;
+		return result;
 	}
 
 	private <E extends Comparable<? super E>> E med3(E x, E y, E z) {
@@ -51,4 +48,11 @@ public class QuickSort {
 			return z;
 	}
 
+	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
+		E a = result.get(i);
+		E b = result.get(j);
+		result.set(i, b);
+		result.set(j, a);
+		return true;
+	}
 }

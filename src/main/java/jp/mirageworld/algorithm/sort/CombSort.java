@@ -11,11 +11,7 @@ public class CombSort {
 		while (true) {
 			int swaps = 0;
 			for (int i = 0, j = i + h; i + h < list.size(); ++i, j = i + h) {
-				E a = result.get(i);
-				E b = result.get(j);
-				if (a.compareTo(b) > 0) {
-					result.set(i, b);
-					result.set(j, a);
+				if (swap(result, i, j)) {
 					swaps++;
 				}
 			}
@@ -28,5 +24,16 @@ public class CombSort {
 			}
 		}
 		return result;
+	}
+
+	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
+		E a = result.get(i);
+		E b = result.get(j);
+		if (a.compareTo(b) > 0) {
+			result.set(i, b);
+			result.set(j, a);
+			return true;
+		}
+		return false;
 	}
 }

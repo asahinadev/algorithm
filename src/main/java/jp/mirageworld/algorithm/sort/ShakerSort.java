@@ -13,11 +13,7 @@ public class ShakerSort {
 			// 順方向のスキャン
 			int last = top;
 			for (int i = top, j = i + 1; i < bottom; i++, j++) {
-				E a = result.get(i);
-				E b = result.get(j);
-				if (a.compareTo(b) > 0) {
-					result.set(i, b);
-					result.set(j, a);
+				if (swap(result, i, j)) {
 					last = i;
 				}
 			}
@@ -29,11 +25,7 @@ public class ShakerSort {
 
 			/* 逆方向のスキャン */
 			for (int i = bottom, j = i - 1; i > top; i--, j--) {
-				E a = result.get(i);
-				E b = result.get(j);
-				if (a.compareTo(b) < 0) {
-					result.set(i, b);
-					result.set(j, a);
+				if (swap(result, j, i)) {
 					last = i;
 				}
 			}
@@ -44,5 +36,16 @@ public class ShakerSort {
 				break;
 		}
 		return result;
+	}
+
+	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
+		E a = result.get(i);
+		E b = result.get(j);
+		if (a.compareTo(b) > 0) {
+			result.set(i, b);
+			result.set(j, a);
+			return true;
+		}
+		return false;
 	}
 }

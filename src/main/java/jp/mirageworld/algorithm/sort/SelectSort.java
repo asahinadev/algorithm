@@ -24,4 +24,8 @@ public class SelectSort {
 		}
 		return result;
 	}
+
+	protected <E extends Comparable<? super E>> boolean swap(List<E> result, int i, int j) {
+		throw new UnsupportedOperationException();
+	}
 }
