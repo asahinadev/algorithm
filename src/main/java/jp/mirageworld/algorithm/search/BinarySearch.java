@@ -3,19 +3,21 @@ package jp.mirageworld.algorithm.search;
 import java.util.List;
 import java.util.Objects;
 
-public class BinarySearch {
+public class BinarySearch<T extends Comparable<? super T>> implements Search<T> {
 
 	int top = 0;
-	int curr;
+	int curr = 0;
 
-	public <T extends Comparable<T>> int apply(List<T> list, T target) {
+	@Override
+	public int apply(List<T> list, T target) {
 		if (check(list, target)) {
 			return top + curr;
 		}
 		return -1;
 	}
 
-	public <T extends Comparable<T>> boolean check(List<T> list, T target) {
+	@Override
+	public boolean check(List<T> list, T target) {
 		int len = list.size();
 		if (len == 0) {
 			return false;

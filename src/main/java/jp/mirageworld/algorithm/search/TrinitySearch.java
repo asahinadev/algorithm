@@ -2,18 +2,20 @@ package jp.mirageworld.algorithm.search;
 
 import java.util.List;
 
-public class TrinitySearch {
+public class TrinitySearch<T extends Comparable<? super T>> implements Search<T> {
 
 	int curr;
 
-	public <T extends Comparable<T>> int apply(List<T> list, T target) {
+	@Override
+	public int apply(List<T> list, T target) {
 		if (check(list, target)) {
 			return curr;
 		}
 		return -1;
 	}
 
-	public <T extends Comparable<T>> boolean check(List<T> list, T target) {
+	@Override
+	public boolean check(List<T> list, T target) {
 		int start = 0;
 		int end = list.size() - 1;
 
