@@ -1,14 +1,42 @@
 package jp.mirageworld.algorithm.sort;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Deprecated
 public class BinaryInsertSort<E extends Comparable<? super E>>
 		implements Sort<E> {
 
-	// TODO アルゴリズム調査中
 	@Override
 	public List<E> apply(List<E> list) {
-		throw new UnsupportedOperationException("アルゴリズム調査中");
+
+		List<E> result = new ArrayList<>(list);
+
+		for (int sorted = 1; sorted < result.size(); sorted++) {
+			// ソート済み領域の直後の値
+			E insert = result.get(sorted);
+
+			// バイナリサーチ
+			int left = 0;
+			int right = sorted;
+			while (left < right) {
+				int mid = (left + right) / 2;
+
+				if (result.get(mid).compareTo(insert) < 0) {
+					left = mid + 1;
+				} else {
+					right = mid;
+				}
+			}
+			int i = left;
+
+			// 挿入ソート
+			while (i <= sorted) {
+				E temp = result.get(i);
+				result.set(i, insert);
+				insert = temp;
+				i++;
+			}
+		}
+		return result;
 	}
 }

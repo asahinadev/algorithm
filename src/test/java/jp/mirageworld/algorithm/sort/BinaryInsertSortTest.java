@@ -1,17 +1,11 @@
 package jp.mirageworld.algorithm.sort;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
 import org.junit.jupiter.api.Test;
 
 class BinaryInsertSortTest extends AbstractSortTest {
 
-	@Test()
-	@SuppressWarnings("deprecation")
+	@Test
 	void test() {
-		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
-		assertThrows(
-				UnsupportedOperationException.class,
-				() -> new TournamentSort<Integer>().apply(list));
+		super.sortTest(new BinaryInsertSort<Integer>().apply(list));
 	}
 }
