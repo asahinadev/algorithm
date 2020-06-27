@@ -11,7 +11,7 @@ class PatienceSortTest extends AbstractSortTest {
 	void test() {
 		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
 		assertThrows(
-				UnsupportedOperationException.class, 
+				UnsupportedOperationException.class,
 				() -> new PatienceSort<Integer>().apply(list));
 	}
 }

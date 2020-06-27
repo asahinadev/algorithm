@@ -11,7 +11,7 @@ class RadixSortTest extends AbstractSortTest {
 	void test() {
 		// TODO ƒAƒ‹ƒSƒŠƒYƒ€’²¸’†
 		assertThrows(
-				UnsupportedOperationException.class, 
+				UnsupportedOperationException.class,
 				() -> new RadixSort<Integer>().apply(list));
 	}
 }
